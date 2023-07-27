@@ -1,3 +1,10 @@
+# Note: the CAP functionality has been implemented to be (mostly) readable rather than fast, with a focus on ensuring that the low-level functions
+# for running integrators and generating the maps G and DG (written F and DF in this code) are fairly general. The downside is that there are some type 
+# instabilities that are unavoidable without significantly more time investment, and this can make the proofs run slower than they should. 
+# This is especially the case for anything that communicates with a data file. The symbolic controllers are especially problematic, since each row of the csv
+# file requires the controller (and subsequent components) to be recompiled. It would be far more efficient (and transparent, in terms of the code) to use 
+# pyCall to grab fields out of the pytorch structures directly and then to parameterize the controllers on the julia side.
+
 function _F(X::Vector{T} where T<:Real, candidate_X::Vector{T} where T<:Real, vector_field, stepper, controller, action_map, η, rotation_function, dimension_space::Int; rotation_amount::T where T<:Real= 2*pi)
     N = length(X);  h = X[1];  x = view(X,2:N);    m = Int64((N-1)/dimension_space);    candidate_x = view(candidate_X,2:N)
     if m*dimension_space+1 !== N
