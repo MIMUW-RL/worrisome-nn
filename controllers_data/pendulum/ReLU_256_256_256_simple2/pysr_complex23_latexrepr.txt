@@ -1,0 +1,1 @@
+\frac{x_{0} \cdot \left(2.41 x_{1} + x_{2}\right)}{- 0.0916 x_{0}^{2} x_{2} \cdot \left(4.32 x_{1} + x_{2}\right) - 0.618}

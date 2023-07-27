@@ -1,0 +1,1 @@
+\frac{x_{0} \cdot \left(3.56 x_{1} + x_{2}\right)}{- 0.0614 x_{2} \cdot \left(7.07 x_{1} + x_{2}\right) - 0.807}

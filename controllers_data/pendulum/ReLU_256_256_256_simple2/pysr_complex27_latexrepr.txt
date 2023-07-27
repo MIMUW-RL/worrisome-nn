@@ -1,0 +1,1 @@
+\frac{x_{0} \cdot \left(2.72 x_{1} + x_{2}\right)}{- 0.0761 x_{2} \cdot \left(4.91 x_{1} + x_{2}\right) \left(x_{0} \left(x_{0} - 0.0761\right) + 0.0809\right) - 0.666}
