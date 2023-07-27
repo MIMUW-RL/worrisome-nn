@@ -68,13 +68,6 @@ julia> include("path/to/julia/VerifySolutionsOrbits/src/VerifySolutionsOrbits.jl
 - NOTE/HELP TO WINDOWS USERS, if julia is giving you errors when trying to copy and paste paths, see this post: 
 https://discourse.julialang.org/t/windows-file-path-string-slash-direction-best-way-to-copy-paste/29204
 
-- Note: the CAP functionality has been implemented to be (mostly) readable rather than fast, with a focus on ensuring that the low-level functions
-for running integrators and generating the maps G and DG (written F and DF in this code) are fairly general. The downside is that there are some type 
-instabilities that are unavoidable without significantly more time investment, and this can make the proofs run slower than they should. 
-This is especially the case for anything that communicates with a data file. The symbolic controllers are especially problematic, since each row of the csv
-file requires the controller (and subsequent components) to be recompiled. It would be far more efficient (and transparent, in terms of the code) to use 
-pyCall to grab fields out of the pytorch structures directly and then to parameterize the controllers on the julia side. We are looking into doing that.
-
 _Usage Example 1:_ Loading the Large NN, finding and proving all periodic orbits in cartpole swingup model. This has been scripted for ease of reproduction.
 
 - Run the following from the REPL: 
