@@ -51,7 +51,13 @@ The workflow:
 
 ### Julia micro-documentation
 
-- Use Pkg to activate/instantiate the environment, then include all required components as follows...
+Dependencies: 
+* ForwardDiff
+* RadiiPolynomial
+* CSV
+* DataFrames
+
+Note that all dependencies are downloaded/installed on activation. Use Pkg to activate/instantiate the environment, then include all required components as follows...
 ```
 julia> import Pkg
 julia> Pkg.activate("path/to/julia/VerifySolutionsOrbits") # edit the path accordingly
