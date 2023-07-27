@@ -12,6 +12,10 @@ Raw csv datafiles with controller data imported in the paper appendix are found 
 
 ### Studied problems
 
+At present our implementation is limited to two simple benchmark problems implemented in [environment/cartpole_swingup_modif.py](environment/cartpole_swingup_modif.py) and [environment/pendulum.py](environment/pendulum.py). 
+We required the problems to be defined in a closed form and reimplemented in Julia in order to perform the proofs. We are working on extending our method
+to more complicated problems including the MuJoCo suite standard benchmark. 
+
 ### Controllers Data
 
 Each directory corresponding to the studied controller class contains info on the studied controllers, the computed metrics reported in the paper (like average return & penalty).   
