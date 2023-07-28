@@ -57,12 +57,12 @@ Dependencies:
 * CSV
 * DataFrames
 
-Note that all dependencies are downloaded/installed on activation. Use Pkg to activate/instantiate the environment, then include all required components as follows...
-```
-julia> import Pkg
-julia> Pkg.activate("path/to/julia/VerifySolutionsOrbits") # edit the path accordingly
-julia> Pkg.instantiate()
-julia> using VerifySolutionsOrbits;
+Note that all dependencies are downloaded/installed on instantiation. Use Pkg to activate/instantiate the environment and package as follows...
+```julia
+import Pkg
+Pkg.activate("path/to/julia/VerifySolutionsOrbits") # edit the path accordingly
+Pkg.instantiate()
+using VerifySolutionsOrbits;
 ```
 
 - NOTE/HELP TO WINDOWS USERS, if julia is giving you errors when trying to copy and paste paths, see this post: 
@@ -84,13 +84,12 @@ where path = suitably formatted (string) path to:   `...\controllers_data\cartpo
 - Convert weights and biases to BigFloat (4096 bits; required because of extreme wrapping effect). 
 `julia> W,B = convert_weight_bias_bigfloat(W,B;precision=4096);`
 
-- Pass the network to the batch proof function.
+- Pass the network to the batch proof function; where csv_path = suitably formatted (string) path to: `...\controllers_data\cartpole_swingup\transients_infiniteray_cma\SmallNet25_cma_swingup_final_model_transients_hof.csv`
+```julia
+activations = ["ReLU","Tanh"];
+scaling(x) = x;
+solutions, penalty, escape, escape_flag, step_size = prove_transients_cartpole_NeuralNet(x->Network(x,W,B,activations,scaling),csv_path);
 ```
-julia> activations = ["ReLU","Tanh"];
-julia> scaling(x) = x;
-julia> solutions, penalty, escape, escape_flag, step_size = prove_transients_cartpole_NeuralNet(x->Network(x,W,B,activations,scaling),csv_path);
-```
-where csv_path = suitably formatted (string) path to: `...\controllers_data\cartpole_swingup\transients_infiniteray_cma\SmallNet25_cma_swingup_final_model_transients_hof.csv`
 
 - Print the LaTeX table
 `julia> str = output_LaTeX_table_cartpole("Small NN", csv_path, solutions, penalty, escape_flag);`
