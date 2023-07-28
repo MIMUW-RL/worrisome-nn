@@ -201,7 +201,7 @@ function proof_cartpole_LargeNet(jld2_file::String,tensors_folder::String)
     return ie,penalty_accumulation,mean_penalty,max_abs_θ,ϵ
 end
 
-function prove_transients_cartpole(csv_string::String; ep_len=2000, precision=4096, vector_field=cart_pole_swingup_vector_field(params=CartPoleSwingupParams()),
+function prove_transients_cartpole(csv_string::String; ep_len=2000, precision=4096, vector_field=cart_pole_swingup_vector_field(params=CartPoleSwingupParams_Base()),
     interval_vector_field=cart_pole_swingup_vector_field(params=Interval_CartPoleSwingupParams(precision=precision)), explicit_implicit_actionmap = CartPoleSwingup_steppers(),
     xbound_left = -2.4, xbound_right = 2.4)
     ## DESCRIPTION ##
@@ -248,7 +248,7 @@ function prove_transients_cartpole(csv_string::String; ep_len=2000, precision=40
     return solutions, penalty, escape, escape_flag
 end
 
-function calculate_transients_cartpole_NeuralNet(controller, csv_string::String; ep_len=2000, vector_field=cart_pole_swingup_vector_field(params=CartPoleSwingupParams()),
+function calculate_transients_cartpole_NeuralNet(controller, csv_string::String; ep_len=2000, vector_field=cart_pole_swingup_vector_field(params=CartPoleSwingupParams_Base()),
     explicit_implicit_actionmap = CartPoleSwingup_steppers())
     # Calculates penalties (non-rigorous) associated to a neural network controller and csv file of unstabilized solutions.
     # This function is not used in the paper, and is included for reader interest only.
@@ -284,7 +284,7 @@ function calculate_transients_cartpole_NeuralNet(controller, csv_string::String;
     return solutions, penalty, escape_flag, escape, dataset.h
 end
 
-function prove_transients_cartpole_NeuralNet(controller, csv_string::String; ep_len=2000, vector_field=cart_pole_swingup_vector_field(params=CartPoleSwingupParams()),precision=4096,
+function prove_transients_cartpole_NeuralNet(controller, csv_string::String; ep_len=2000, vector_field=cart_pole_swingup_vector_field(params=CartPoleSwingupParams_Base()),precision=4096,
     interval_vector_field=cart_pole_swingup_vector_field(params=Interval_CartPoleSwingupParams(precision=precision)), explicit_implicit_actionmap = CartPoleSwingup_steppers())
     # Calculates penalties and data rigorously for unstabilized solutions for specified neural net controller for cartpole swingup.
     # Input:
