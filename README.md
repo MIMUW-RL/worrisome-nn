@@ -62,7 +62,7 @@ Note that all dependencies are downloaded/installed on activation. Use Pkg to ac
 julia> import Pkg
 julia> Pkg.activate("path/to/julia/VerifySolutionsOrbits") # edit the path accordingly
 julia> Pkg.instantiate()
-julia> include("path/to/julia/VerifySolutionsOrbits/src/VerifySolutionsOrbits.jl");
+julia> using VerifySolutionsOrbits;
 ```
 
 - NOTE/HELP TO WINDOWS USERS, if julia is giving you errors when trying to copy and paste paths, see this post: 
