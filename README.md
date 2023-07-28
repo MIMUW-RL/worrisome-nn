@@ -68,6 +68,16 @@ using VerifySolutionsOrbits;
 - NOTE/HELP TO WINDOWS USERS, if julia is giving you errors when trying to copy and paste paths, see this post: 
 https://discourse.julialang.org/t/windows-file-path-string-slash-direction-best-way-to-copy-paste/29204
 
+Structure of the package:
+
+- Pendulum.jl and CartPoleSwingup.jl : structs for pendulum and cartpole vector fields, penalty functions, and other pendulum/cartpole specific functions.
+- controllers.jl : Landajuela controllers as well as "generic" controllers for pendulum and cartpole.
+- integrator.jl : generic integrator. Uses steppers from Pendulum.jl/CartPoleSwingup.jl.
+- network.jl : for contstructing neural network controllers.
+- numerics.jl : Newton's method implementation, orbit finders.
+- proofs.jl : Implements abstract theorems on computer-assisted proof. The function `check_contraction` is generic; all other functions are tailored to the structures of Pendulum.jl/CartPoleSwingup.jl.
+- batch.jl : Batch proof functions to reproduce tables from the appendices.
+
 _Usage Example 1:_ Loading the Large NN, finding and proving all periodic orbits in cartpole swingup model. This has been scripted for ease of reproduction.
 
 - Run the following from the REPL: 
