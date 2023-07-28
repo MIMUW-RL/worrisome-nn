@@ -22,7 +22,7 @@ Base.@kwdef struct CartPoleSwingupParams{T<:Real}
     mpl::T
 end
 
-function CartPoleSwingupParams(;gravity=9.82,forcemag=10.0,friction=0.1,cart::CartParams=CartParams(),pole::PoleParams=PoleParams())
+function CartPoleSwingupParams_Base(;gravity=9.82,forcemag=10.0,friction=0.1,cart::CartParams=CartParams(),pole::PoleParams=PoleParams())
     masstotal = cart.mass + pole.mass
     mpl = pole.mass*pole.length
     return CartPoleSwingupParams(gravity,forcemag,friction,cart,pole,masstotal,mpl)
@@ -51,7 +51,7 @@ function Interval_CartPoleSwingupParams(;precision=512)
     pole_length = @biginterval(0.6)
     pole_mass = @biginterval(0.5)
     pole = PoleParams(pole_width,pole_length,pole_mass)
-    return CartPoleSwingupParams(;gravity=gravity,forcemag=forcemag,friction=friction,cart=cart,pole=pole)
+    return CartPoleSwingupParams_Base(;gravity=gravity,forcemag=forcemag,friction=friction,cart=cart,pole=pole)
 end
 
 # Integrator function constructor / other integrator functions.
@@ -93,7 +93,7 @@ end
 
 # Vector Field.
 
-function _cart_pole_swingup_vector_field(X::Vector{T} where T, action::T where T ; params::CartPoleSwingupParams=CartPoleSwingupParams())
+function _cart_pole_swingup_vector_field(X::Vector{T} where T, action::T where T ; params::CartPoleSwingupParams=CartPoleSwingupParams_Base())
     _,x_dot,theta,theta_dot = X
     sin_theta = sin(theta)
     cos_theta = cos(theta)
@@ -114,7 +114,7 @@ function _cart_pole_swingup_vector_field(X::Vector{T} where T, action::T where T
     return [x_dot;xdot_update;theta_dot;thetadot_update]
 end
 
-function cart_pole_swingup_vector_field(;params::CartPoleSwingupParams=CartPoleSwingupParams())
+function cart_pole_swingup_vector_field(;params::CartPoleSwingupParams=CartPoleSwingupParams_Base())
     return (x,u) -> _cart_pole_swingup_vector_field(x,u;params)
 end
 
