@@ -75,7 +75,7 @@ _Usage Example 1:_ Loading the Large NN, finding and proving all periodic orbits
 where file = suitably formatted (string) path to: `...\julia\VerifySolutionsOrbits\orbits_400_300_ReLU_cartpole\relu_400_300_cartpole_swingup.jld2`
 where folder = suitably formatted (string) path to: `...\controllers_data\cartpole_swingup\ReLU_400_300`
 
-_Usage Example 2:_ Loading the Small NN, proving all unstabilized solutions and reconstructing the table (LaTeX code) from the paper.
+_Usage Example 2:_ Loading the Small NN, proving all unstabilized solutions and reconstructing the table (LaTeX code) from the paper, for pendulum model.
 
 - Import weights and biases. 
 `julia> W,B = load_tensors_zero_bias(path,2);`
