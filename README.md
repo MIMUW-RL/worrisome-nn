@@ -62,7 +62,7 @@ Note that all dependencies are downloaded/installed on instantiation. Use Pkg to
 import Pkg
 Pkg.activate("path/to/julia/VerifySolutionsOrbits") # edit the path accordingly
 Pkg.instantiate()
-using VerifySolutionsOrbits;
+using VerifySolutionsOrbits
 ```
 
 - NOTE/HELP TO WINDOWS USERS, if julia is giving you errors when trying to copy and paste paths, see this post: 
