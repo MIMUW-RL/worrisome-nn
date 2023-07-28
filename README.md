@@ -78,8 +78,8 @@ where folder = suitably formatted (string) path to: `...\controllers_data\cartpo
 _Usage Example 2:_ Loading the Small NN, proving all unstabilized solutions and reconstructing the table (LaTeX code) from the paper, for cartpole swingup model.
 
 - Import weights and biases. 
-`julia> W,B = load_tensors_zero_bias(path,2);`
-where path = suitably formatted (string) path to:   `...\controllers_data\pendulum\SmallNet`
+`julia> W,B = load_tensors_zero_bias("SmallNet25_cma_swingup_final_model.pt_fc",path,2);`
+where path = suitably formatted (string) path to:   `...\controllers_data\cartpole_swingup\SmallNet`
 
 - Convert weights and biases to BigFloat (4096 bits; required because of extreme wrapping effect). 
 `julia> W,B = convert_weight_bias_bigfloat(W,B;precision=4096);`
