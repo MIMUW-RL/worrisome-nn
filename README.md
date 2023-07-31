@@ -1,6 +1,8 @@
 ### code release for ECAI23 paper entitled
 ### _Worrisome Properties of Neural Network Controllers and Their Symbolic Representations_ by Jacek Cyranka, Kevin E M Church and Jean-Philippe Lessard
 
+[Extended paper on ArXiV](https://arxiv.org/abs/2307.15456).
+
 Codebase consists of two separate packages (Python and Julia).
 
 Controllers training, sybolic/small-net regression and persistent solutions search is done in Python,
